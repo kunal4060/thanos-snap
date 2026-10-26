@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 280px; margin: 0; padding: 16px; font-family: 'Segoe UI', system-ui, sans-serif; background: #14101d; color: #f0eef5; }
+  h1 { font-size: 16px; margin: 0 0 4px; }
+  h1 span { color: #f5c542; }
+  p.sub { font-size: 12px; color: #a89fc0; margin: 0 0 14px; }
+  .row { display: flex; align-items: center; justify-content: space-between; margin: 12px 0; font-size: 13px; }
+  .row label { cursor: pointer; }
+  select { background: #241b33; color: #f0eef5; border: 1px solid #4a3a66; border-radius: 6px; padding: 4px 6px; font-size: 13px; }
+  .switch { position: relative; width: 40px; height: 22px; display: inline-block; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider { position: absolute; inset: 0; background: #4a3a66; border-radius: 22px; cursor: pointer; transition: .2s; }
+  .slider:before { content: ''; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .2s; }
+  .switch input:checked + .slider { background: #f5c542; }
+  .switch input:checked + .slider:before { transform: translateX(18px); }
+  #status { font-size: 12px; padding: 8px 10px; border-radius: 8px; background: #241b33; margin: 10px 0; line-height: 1.5; }
+  #status .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+  .dot.on { background: #4ade80; }
+  .dot.off { background: #f87171; }
+  button { width: 100%; padding: 9px; border: none; border-radius: 8px; background: #f5c542; color: #1a1025; font-weight: 700; font-size: 13px; cursor: pointer; margin-top: 6px; }
+  button:hover { background: #ffd75e; }
+  .hint { font-size: 11px; color: #a89fc0; margin-top: 10px; line-height: 1.5; }
+  .hint kbd { background: #241b33; border: 1px solid #4a3a66; border-radius: 4px; padding: 0 4px; font-family: inherit; }
+</style>
+</head>
+<body>
+  <h1>Thanos Snap <span>Meet · Teams · Zoom</span></h1>
+  <p class="sub">Snap your fingers — disappear from any call. Snap again — you're back.</p>
+
+  <div class="row">
+    <label for="enabled">Snap detection</label>
+    <label class="switch"><input type="checkbox" id="enabled" checked><span class="slider"></span></label>
+  </div>
+
+  <div class="row">
+    <label for="sensitivity">Sensitivity</label>
+    <select id="sensitivity">
+      <option value="low">Low (loud snaps only)</option>
+      <option value="medium" selected>Medium</option>
+      <option value="high">High (quiet room)</option>
+    </select>
+  </div>
+
+  <div id="status">Checking meeting tab…</div>
+
+  <button id="test">Test the snap effect</button>
+
+  <p class="hint">Manual trigger: <kbd>Alt</kbd> + <kbd>S</kbd> anytime in the meeting. Works on Google Meet, Microsoft Teams and Zoom (web). The mic is only used to hear snaps — audio is processed locally and never leaves your device. Works best in a quiet room; claps can also trigger it.</p>
+
+<script src="popup.js"></script>
+</body>
+</html>
